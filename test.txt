@@ -1,0 +1,3 @@
+python .\test.py --mode vanilla
+python .\test.py --mode knowledge_distillation --batch_size 14
+python .\test.py --mode feature_distillation

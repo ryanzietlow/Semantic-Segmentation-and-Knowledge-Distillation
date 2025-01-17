@@ -1,0 +1,57 @@
+-- total training time
+-- loss plots, val and training
+-- for training we need milliseconds per image
+-- #parameters
+
+testing:
+-- miou
+-- ms per image
+-- inference speed
+-- prediction images
+
+
+
+
+
+python train.py --mode vanilla --num_epochs 25
+
+Epoch 25 - Validation mIoU: 0.0520
+Total time taken: 0:37:46.356139
+Best mIoU: 0.05381
+Time per image: 0.03112 seconds
+Number of parameters: 182005
+
+python train.py --mode knowledge_distillation --batch_size 14 --num_epochs 25
+
+Epoch 25 - Validation mIoU: 0.0529
+Total time taken: 0:48:54.436633
+Best mIoU: 0.05729
+Time per image: 0.04029 seconds
+Number of parameters: 182005
+
+python train.py --mode feature_distillation --num_epochs 25
+
+Epoch 25 - Validation mIoU: 0.0518
+Total time taken: 1:12:35.882485
+Best mIoU: 0.05434
+Time per image: 0.05981 seconds
+Number of parameters: 182005
+
+
+python .\test.py --mode vanilla
+
+Testing Results for vanilla mode:
+Mean Intersection over Union (mIoU): 0.05381
+Average Inference Time per Image: 0.00023 seconds
+
+python .\test.py --mode knowledge_distillation --batch_size 14
+
+Testing Results for knowledge_distillation mode:
+Mean Intersection over Union (mIoU): 0.05729
+Average Inference Time per Image: 0.00032 seconds
+
+python .\test.py --mode feature_distillation
+
+
+
+I guess we forgot to change the batch size, just mention that we chose the wrong batch size for feature distillation so training took longer
